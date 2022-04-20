@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+
+        <h1>list</h1>
+    
+        <table  class="table table-striped">
+        <tr v-for="list in winelist">
+            <td> id: {{list.coolerId}}</td>
+            <td> CapacityOfBottles: {{list.capacityOfBottles}}</td>
+            <td> Temp: {{list.temp}} </td>
+            <td> BottlesInStorage: {{list.bottlesInStorage}} </td>
+        </tr>
+
+    </table>
+
+    <h1>Get by ID (GET)</h1>
+        <input v-model="idToGetBy" placeholder="id" type="number" />
+        <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
+        <div v-if="singleWine">
+            id: {{singleWine.coolerId}} CapacityOfBottles: {{singleWine.capacityOfBottles}} Temp: {{ singleWine.temp}}  BottlesInStorage: {{singleWine.bottlesInStorage}}
+        </div>
+        <div v-else>Nothing</div>
+
+        <h1>Add</h1>
+         <div class="container">
+        <input v-model.number="wine.capacityOfBottles" placeholder="CapacityOfBottles" type="number"><br>
+        <input v-model.number="wine.temp" placeholder="Temp" type="number"><br>
+        <input v-model.number="wine.bottlesInStorage" placeholder="BottlesInStorage" type="number"><br>
+
+        <button v-on:click="addwine()" class="btn btn-primary">add</button>
+        </div>
+
+
+        <script src="index.js"></script>
+
+
+
+    </div>
+</body>
+</html>
